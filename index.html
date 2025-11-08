@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+
+    // window.onload = function () {
+    //     //定义 一个随机生成五位数字和字母的验证码 函数 
+    //     function getCode(){
+    //         let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e']
+    //         let str = '';
+    //         for (let i = 1; i <= 5; i++) {
+    //             let num = Math.round(Math.random() * (15))
+    //             str += arr[num]
+    //         }
+    //         return str
+    //     }
+    //     //生成验证码
+    //     let str = getCode()
+    //     document.getElementById("checkCode").innerHTML = str
+    //     //点击事件
+    //     document.getElementById("linkbt").onclick = function () {
+    //        document.getElementById("checkCode").innerHTML = getCode()
+    //     }
+    //     //提交对比
+    //     document.getElementById('Button1').onclick = function(){
+    //         let inputCode = document.getElementById("inputCode").value
+    //         let checkCode = document.getElementById("checkCode").innerHTML
+    //         if(inputCode != checkCode){
+    //             alert("您输入的不正确")
+    //             document.getElementById("inputCode").value = ''
+    //             return false
+    //         }else{
+    //             alert("验证码正确")
+    //             return true
+    //         }
+    //     }
+    // }
+window.onload = function () { 
+    //首先定义一个生成验证码的函数
+    function getCode(){
+        let arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e']
+        let str = '';
+        for (let i = 1; i <= 5; i++) {
+            let num = Math.round(Math.random() * (15))
+            str += arr[num]
+        }
+        return str
+    }
+
+    let str = getCode()
+    document.getElementById("checkCode").innerHTML = str
+    document.getElementById("linkbt").onclick = function () {
+        document.getElementById("checkCode").innerHTML = getCode()
+    }
+    document.getElementById('Button1').onclick = function(){ 
+        let checkCode = document.getElementById("checkCode").innerHTML
+        let inputCode = document.getElementById("inputCode").value
+        if(inputCode != checkCode){
+            alert("您输入的不正确")
+            document.getElementById("inputCode").value = ''
+            return false
+        }else{
+            alert("验证码正确")
+            return true
+
+        }
+    }
+}    
+
+
+        
+
+    
+
+</script>
+
+<body>
+
+
+    <div class="v_code">
+        <div class="code_show">
+            <span class="code" id="checkCode"></span>
+            <a id="linkbt">换一张</a>
+        </div>
+        <div class="input_code">
+            <label for="inputCode">验证码：</label>
+            <input type="text" id="inputCode">
+            <span id="text_show"></span>
+        </div>
+        <input type="button" id="Button1" value="确定">
+    </div>
+
+</body>
+
+</html>
